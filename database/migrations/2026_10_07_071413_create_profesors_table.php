@@ -12,8 +12,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('profesor', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+           $table->id();
+
+        // Nombre del profesor
+        $table->string('nombre', 100);
+
+        // Apellidos del profesor
+        $table->string('apellidos', 130);
+
+        // Especialidad del profesor
+        $table->string('especialidad', 100);
+
+        // Fecha de incorporación
+        $table->date('fecha_alta');
+
+        // Salario con dos decimales
+        $table->decimal('salario', 8, 2);
+
+        // Evita repetir la combinación de nombre y apellidos
+        $table->unique(['nombre', 'apellidos']);
+
+        $table->timestamps();
         });
     }
 
